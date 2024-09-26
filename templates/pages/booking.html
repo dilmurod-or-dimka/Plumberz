@@ -60,6 +60,8 @@
             <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
+                    {% csrf_token %}
+
                     <div class="modal-content rounded-0">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
@@ -85,40 +87,47 @@
                 <div class="col-lg-8">
                     <div class="bg-light text-center p-5">
                         <h1 class="mb-4">Book For A Service</h1>
-                        <form>
+                        <form method="POST" action="{% url 'booking' %}">
+                            {% csrf_token %}
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name"
+                                    <input type="text" class="form-control border-0" placeholder="Your Name" name="name"
                                            style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <input type="email" class="form-control border-0" placeholder="Your Email"
-                                           style="height: 55px;">
+                                           name="email" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
+                                    <select class="form-select border-0" name="service" style="height: 55px;">
+                                        {% for service in services %}
+                                            <option value="{{ service.id }}">{{ service.title }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text"
-                                               class="form-control border-0 datetimepicker-input"
-                                               placeholder="Service Date" data-target="#date1"
+                                        <input type="text" class="form-control border-0 datetimepicker-input"
+                                               placeholder="Service Date" name="date" data-target="#date1"
                                                data-toggle="datetimepicker" style="height: 55px;">
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Request"></textarea>
+                                    <textarea class="form-control border-0" placeholder="Special Request"
+                                              name="messages"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
                                 </div>
                             </div>
                         </form>
+                        {% if messages %}
+                            <div class="alert alert-success">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -128,7 +137,7 @@
 {% endblock %}
 
 {% block js %}
-        <!-- JavaScript Libraries -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'lib/wow/wow.min.js' %}"></script>

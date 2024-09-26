@@ -13,7 +13,8 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap"
+          rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -22,7 +23,7 @@
     <!-- Libraries Stylesheet -->
     <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet"/>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -63,70 +64,37 @@
                         <h1 class="mb-5">Explore Our Services</h1>
                     </div>
                     <div class="owl-carousel service-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                 style="width: 75px; height: 75px;">
-                                <i class="fa fa-water fa-2x text-primary"></i>
+                        {% for service in services %}
+                            <div class="bg-light p-4">
+                                <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4">
+                                </div>
+                                <h4 class="mb-3">{{ service.title }}</h4>
+                                <p>{{ service.description }}</p>
+                                <p class="text-primary fw-medium">
+                                    {% if service.quality is True %}
+                                        <i class="fa fa-check text-success me-2"></i>
+                                    {% else %}
+                                        <i class="fa fa-times text-danger me-2"></i>
+                                    {% endif %}
+                                    Quality Service
+                                </p>
+                                <p class="text-primary fw-medium">
+                                    {% if service.customer is True %}
+                                        <i class="fa fa-check text-success me-2"></i>
+                                    {% else %}
+                                        <i class="fa fa-times text-danger me-2"></i>
+                                    {% endif %}
+                                    Customer Satisfaction</p>
+                                <p class="text-primary fw-medium">
+                                    {% if service.supports is True %}
+                                        <i class="fa fa-check text-success me-2"></i>
+                                    {% else %}
+                                        <i class="fa fa-times text-danger me-2"></i>
+                                    {% endif %}
+                                    Support 24/7
+                                </p>
                             </div>
-                            <h4 class="mb-3">Drain Repair</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Quality
-                                Service</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Customer
-                                Satisfaction</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Support 24/7
-                            </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">Read More<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                 style="width: 75px; height: 75px;">
-                                <i class="fa fa-toilet fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Toilet Pipe Repair</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Quality
-                                Service</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Customer
-                                Satisfaction</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Support 24/7
-                            </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">Read More<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                 style="width: 75px; height: 75px;">
-                                <i class="fa fa-shower fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Sewer Line Repair</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Quality
-                                Service</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Customer
-                                Satisfaction</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Support 24/7
-                            </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">Read More<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                 style="width: 75px; height: 75px;">
-                                <i class="fa fa-tint fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Water Heater Repair</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Quality
-                                Service</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Customer
-                                Satisfaction</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Support 24/7
-                            </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">Read More<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -136,7 +104,7 @@
 
 
     <!-- Booking Start -->
-    <div class="container-fluid my-5 px-0">
+    <div class="container-fluid px-0" style="margin: 6rem 0;">
         <div class="video wow fadeInUp" data-wow-delay="0.1s">
             <button type="button" class="btn-play" data-bs-toggle="modal"
                     data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
@@ -146,6 +114,8 @@
             <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
+                    {% csrf_token %}
+
                     <div class="modal-content rounded-0">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
@@ -171,40 +141,47 @@
                 <div class="col-lg-8">
                     <div class="bg-light text-center p-5">
                         <h1 class="mb-4">Book For A Service</h1>
-                        <form>
+                        <form method="POST" action="{% url 'booking' %}">
+                            {% csrf_token %}
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name"
+                                    <input type="text" class="form-control border-0" placeholder="Your Name" name="name"
                                            style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <input type="email" class="form-control border-0" placeholder="Your Email"
-                                           style="height: 55px;">
+                                           name="email" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
+                                    <select class="form-select border-0" name="service" style="height: 55px;">
+                                        {% for service in services %}
+                                            <option value="{{ service.id }}">{{ service.title }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text"
-                                               class="form-control border-0 datetimepicker-input"
-                                               placeholder="Service Date" data-target="#date1"
+                                        <input type="text" class="form-control border-0 datetimepicker-input"
+                                               placeholder="Service Date" name="date" data-target="#date1"
                                                data-toggle="datetimepicker" style="height: 55px;">
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Request"></textarea>
+                                    <textarea class="form-control border-0" placeholder="Special Request"
+                                              name="messages"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
                                 </div>
                             </div>
                         </form>
+                        {% if messages %}
+                            <div class="alert alert-success">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -221,74 +198,25 @@
                 <h1 class="mb-5">Our Clients Say!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                            eos. Clita erat ipsum et lorem et sit.</p>
+                {% for comment in comments %}
+                    <div class="testimonial-item text-center">
+                        <div class="testimonial-text bg-light text-center p-4 mb-4">
+                            <p class="mb-0">{{ comment.content }}</p>
+                        </div>
+                        <img class="bg-light rounded-circle p-2 mx-auto mb-2"
+                                {% if comment.author.avatar %}
+                             src="{{ comment.author.avatar.url }}"
+                                {% else %}
+                             src="{% static 'img/testimonial-4.jpg' %}"
+                                {% endif %}
+                             style="width: 80px; height: 80px;">
+
+                        <h5 class="mb-1">{{ comment.author.username }}</h5>
+                        <p class="m-0">{{ comment.created_at|date:"F j, Y" }}</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="{% static 'img/testimonial-1.jpg' %}"
-                         style="width: 80px; height: 80px;">
-                    <div class="mb-2">
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                    </div>
-                    <h5 class="mb-1">Client Name</h5>
-                    <p class="m-0">Profession</p>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                            eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="{% static 'img/testimonial-2.jpg' %}"
-                         style="width: 80px; height: 80px;">
-                    <div class="mb-2">
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                    </div>
-                    <h5 class="mb-1">Client Name</h5>
-                    <p class="m-0">Profession</p>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                            eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="{% static 'img/testimonial-3.jpg' %}"
-                         style="width: 80px; height: 80px;">
-                    <div class="mb-2">
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                    </div>
-                    <h5 class="mb-1">Client Name</h5>
-                    <p class="m-0">Profession</p>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                            eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="{% static 'img/testimonial-4.jpg' %}"
-                         style="width: 80px; height: 80px;">
-                    <div class="mb-2">
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                        <small class="fa fa-star text-secondary"></small>
-                    </div>
-                    <h5 class="mb-1">Client Name</h5>
-                    <p class="m-0">Profession</p>
-                </div>
+                {% empty %}
+                    <p>No comments yet. Be the first to leave a comment!</p>
+                {% endfor %}
             </div>
         </div>
     </div>
